@@ -39,6 +39,11 @@ public class InventoryManager {
       scanner.nextLine();
       String title = getStringInput("Enter record title: ");
       String artist = getStringInput(Enter artist: ");
-      int year = getIntInput("Enter year: ";
+      int year = getIntInput("Enter year: ");
+      String genre = getStringInput("Enter genre: ");
+      int quantity = getIntinput("Enter quantity; ");
+      scanner.nextLine();
+
+      inStockRecords.add(new Record(title, artist, year, genre, quantity, price));
       
       
