@@ -6,15 +6,15 @@ public class VinylRecord implements Serializable {
     private int year;
     private double price;
     private String genre;
-    private int quantityInStock;
+    private int quantity;
 
-    public Record(String title, String artist, int year, double price, String genre) {
+    public Record(String title, String artist, int year, double price, String genre, int quantity) {
         this.title = title;
         this.artist = artist;
         this.year = year;
         this.price = price;
         this.genre = genre
-        this.quantityInStock = quantityInStock;
+        this.quantity = quantity;
     }
 
     public String getTitle() { return title; }
@@ -22,7 +22,7 @@ public class VinylRecord implements Serializable {
     public int getYear() { return year; }
     public double getPrice() { return price; }
     public String getGenre() { return genre; }
-    public int setQuantityInStock()
+    public int setQuantity() { return quantity; }
 
     @Override
     public String toString() {
