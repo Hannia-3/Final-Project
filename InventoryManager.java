@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class InventoryManager {
     private ArrayList<Record> availableRecords;
