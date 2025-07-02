@@ -12,9 +12,10 @@ public class MenuHandler {
     public void displayMenu() {
         System.out.println("\n--- Vinyl Shop Inventory ---");
         System.out.println("1. Add New Record");
-        System.out.println("2. View Available Inventory");
+        System.out.println("2. View Inventory");
         System.out.println("3. Exit");
         System.out.println("Please enter a number: ");
+        return getIntInput();
     }
 
     public int getValidatedIntegerInput(String prompt) {
@@ -35,13 +36,13 @@ public class MenuHandler {
            displayMenu();
            choice = getValidatedIntegerInput("Enter your choice: ");
             switch (choice) {
-               case 1:
+               case 1: Add Record
                   addRecord;
                   break;
-               case 2: 
+               case 2: View Inventory
                   displayInventory;
                   break;
-               case 3:
+               case 3: Exit
                   System.out.println("Now exiting...");
                   break;
                default:
