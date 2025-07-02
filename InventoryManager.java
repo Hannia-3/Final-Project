@@ -6,7 +6,7 @@ public class InventoryManager {
 
     publicInventoryManager() {
         availableRecords = new ArrayList<>();
-        soldOutRecords = new Record[50];
+        soldOutRecords = new Record[0];
     }
 
     public void addRecord(Record record) {
