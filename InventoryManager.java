@@ -15,3 +15,14 @@ public class InventoryManager {
     }
 
     public void sellRecord(Record record){
+        sellRecord.sell(record);
+    }
+
+    public void viewRecord(Record record) {
+        viewRecord.view(record);
+    }
+
+    public void updateRecord(Record record) {
+        updateRecord.update(record);
+    }
+}
