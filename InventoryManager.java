@@ -42,8 +42,87 @@ public class InventoryManager {
       int year = getIntInput("Enter year: ");
       String genre = getStringInput("Enter genre: ");
       int quantity = getIntinput("Enter quantity; ");
+      double price = getDoubleInput("Enter price ");
       scanner.nextLine();
 
       inStockRecords.add(new Record(title, artist, year, genre, quantity, price));
-      
-      
+      System.out.println("Record has been added.");
+  }
+
+    public void sellRecord() {
+        scanner.nextLine();
+        String titleToSell = getStringInput("Enter title of record to sell: ");
+        boolean found = false;
+        for (int i = 0; i < inStockRecords.size(); i++) {
+            Record record = inStockRecords.get(i);
+            if (record.getTitle().equalsIgnoreCase(titleToSell)) {
+                found = true;
+                if (record.getQuantity() > 1) {
+                    record.setQuantity(record.getQuantity() - 1);
+                    System.out.println("One record, '" + titleToSell + "' sold.");
+                } else {
+                    System.out.println("'" + titleToSell + "' is sold out.");
+                    addSoldOutRecord(record);
+                    inStockRecords.remove(i);
+                }
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("Record not found in inventory.");
+        }
+    }
+
+    private void addSoldOutRecord(Record record) {
+        boolean added = false;
+        for (int i = 0; i < soldOutRecords.length; i++) {
+            if (soldOutRecords[i] == null) {
+                soldOutRecords[i] = record;
+                added = true;
+                break;
+            }
+        }
+        if (!added) {
+            soldOutCapacity *= 2;
+            soldOutRecords = Arrays.copyOf(soldOutRecords, soldOutCapacity);
+            addSoldOutRecord(record);
+        }
+    }
+
+    public void displayInStockRecords() {
+        if (inStockRecords.isEmpty()) {
+            System.out.println("No records in stock currently.");
+            return;
+        }
+        System.out.println("\n--- Records In Stock ---");
+        for (Record record : inStockRecords) {
+            System.out.print(record);
+        }
+    }
+
+    public void displaySoldOutRecords() {
+        boolean empty = true;
+        System.out.println("\n--- Sold Out Records ---");
+        for (Record record ; soldOutRecords) {
+            if (record != null) {
+                System.out.println(record);
+                empty = false;
+            }
+        }
+        if (empty) {
+            System.out.println("No records currently sold out.");
+        }
+    }
+
+    public void saveData() {
+        try (ObjectOutputStream oosInStock = new ObjectOutputStream(new FileOutputStream(IN_STOCK_FILE));
+            OnjectOutputStream oosSoldOut = new ObjectOutputStream(new FileOutputStream(SOLD_OUT_FILE))) {
+            oosInStock.writeObject(inStockRecords);
+            oosSoldOut.writeObject(soldOutRecords);
+            System.out.println("Inventory data saved");
+        } catch (IOException e) {
+            System.out.println("Error saving data: " + e.getMessage());
+        }
+    }
+}
+            
