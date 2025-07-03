@@ -8,7 +8,7 @@ public class InventoryManager {
     private ArrayList<Record> inStockRecords;
     private Record[] soldOutRecords;
     private static final String IN_STOCK_FILE = "inStockRecords.ser";
-    private static fina String SOLD_OUT_FILE = "soldOutRecords.ser";
+    private static final String SOLD_OUT_FILE = "soldOutRecords.ser";
     private Scanner scanner;
     private int soldOutCapacity = 5;
 
@@ -32,13 +32,13 @@ public class InventoryManager {
 
     private String getStringInput(String prompt) {
         System.out.println(prompt);
-        return.scanner.nextLine();
+        return scanner.nextLine();
     }
 
   public void addRecord() {
       scanner.nextLine();
       String title = getStringInput("Enter record title: ");
-      String artist = getStringInput(Enter artist: ");
+      String artist = getStringInput("Enter artist: ");
       int year = getIntInput("Enter year: ");
       String genre = getStringInput("Enter genre: ");
       int quantity = getIntinput("Enter quantity; ");
@@ -103,7 +103,7 @@ public class InventoryManager {
     public void displaySoldOutRecords() {
         boolean empty = true;
         System.out.println("\n--- Sold Out Records ---");
-        for (Record record ; soldOutRecords) {
+        for (Record record : soldOutRecords) {
             if (record != null) {
                 System.out.println(record);
                 empty = false;
