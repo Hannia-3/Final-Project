@@ -14,7 +14,7 @@ public class InventoryManager {
 
     public InventoryManager() {
         inStockRecords = new ArrayList<>();
-        soldOutRecords = new Record(soldOutCapacity);
+        soldOutRecords = new Record[soldOutCapacity];
         scanner = new Scanner(System.in);
         loadData();
     }
@@ -41,7 +41,7 @@ public class InventoryManager {
       String artist = getStringInput("Enter artist: ");
       int year = getIntInput("Enter year: ");
       String genre = getStringInput("Enter genre: ");
-      int quantity = getIntinput("Enter quantity; ");
+      int quantity = getIntInput("Enter quantity; ");
       double price = getDoubleInput("Enter price ");
       scanner.nextLine();
 
@@ -116,7 +116,7 @@ public class InventoryManager {
 
     public void saveData() {
         try (ObjectOutputStream oosInStock = new ObjectOutputStream(new FileOutputStream(IN_STOCK_FILE));
-            OnjectOutputStream oosSoldOut = new ObjectOutputStream(new FileOutputStream(SOLD_OUT_FILE))) {
+            ObjectOutputStream oosSoldOut = new ObjectOutputStream(new FileOutputStream(SOLD_OUT_FILE))) {
             oosInStock.writeObject(inStockRecords);
             oosSoldOut.writeObject(soldOutRecords);
             System.out.println("Inventory data saved");
