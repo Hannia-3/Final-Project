@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.util.ArrayList;
 
 public class InventoryManager {
     private ArrayList<IceCream> inventory = new ArrayList<>();
