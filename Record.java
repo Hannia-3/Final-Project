@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class VinylRecord implements Serializable {
+public class Record implements Serializable {
     private String title;
     private String artist;
     private int year;
@@ -13,7 +13,7 @@ public class VinylRecord implements Serializable {
         this.artist = artist;
         this.year = year;
         this.price = price;
-        this.genre = genre
+        this.genre = genre;
         this.quantity = quantity;
     }
 
